@@ -38,3 +38,5 @@ This measure is adapted from Aron's Inclusion of Other in the Self Scale [1] to 
 
 ## Update
 05/05/2024: ios_task.js is updated such that the question's next button will only show up after one of the circles is dragged. This update is meant to address the issue where participants did not attempt to move the circles at all and were still able to continue the survey.
+
+11/16/2026: Added ios_task_new.js for compatibility with Qualtrics' new survey-taking experience, which no longer loads jQuery by default. This version replaces jQuery calls, handles the absence of the legacy .SkinInner element, and updates how circle positions are saved. Use ios_task_new.js with the new experience and ios_task.js with the legacy experience.
