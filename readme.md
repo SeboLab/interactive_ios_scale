@@ -39,4 +39,17 @@ This measure is adapted from Aron's Inclusion of Other in the Self Scale [1] to 
 ## Update
 05/05/2024: ios_task.js is updated such that the question's next button will only show up after one of the circles is dragged. This update is meant to address the issue where participants did not attempt to move the circles at all and were still able to continue the survey.
 
-11/16/2026: Added ios_task_new.js for compatibility with Qualtrics' new survey-taking experience, which no longer loads jQuery by default. This version replaces jQuery calls, handles the absence of the legacy .SkinInner element, and updates how circle positions are saved. Use ios_task_new.js with the new experience and ios_task.js with the legacy experience.
+11/16/2026: Added ios_task_new.js for compatibility with Qualtrics' new survey-taking experience, which no longer loads jQuery by default. This version replaces jQuery calls, handles the absence of the legacy .SkinInner element, initializes the task in addOnReady, and updates how circle positions are saved. Use ios_task_new.js with the new experience and ios_task.js with the legacy experience.
+
+When using ios_task_new.js, add the following six Embedded Data fields in Survey Flow **before the block containing the task**, leaving their values blank:
+
+```text
+__js_circle_x_1
+__js_circle_y_1
+__js_circle_x_2
+__js_circle_y_2
+__js_circle_x_3
+__js_circle_y_3
+```
+
+Circle positions are saved initially, after a circle is released, and on page submission. The JavaScript uses setJSEmbeddedData with keys without the __js_ prefix because the API adds it automatically.
